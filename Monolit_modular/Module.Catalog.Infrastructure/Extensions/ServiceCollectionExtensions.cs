@@ -15,5 +15,9 @@ namespace Module.Catalog.Infrastructure.Extensions
                 .AddScoped<ICatalogDbContext>(provider => provider.GetService<CatalogDbContext>());
             return services;
         }
+
+        //end user funtions or definitions
     }
+    //end class
 }
+//end namespaces
