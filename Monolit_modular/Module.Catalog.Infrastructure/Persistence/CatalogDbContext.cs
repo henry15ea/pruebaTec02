@@ -20,4 +20,6 @@ namespace Module.Catalog.Infrastructure.Persistence
             base.OnModelCreating(modelBuilder);
         }
     }
+    //end class
 }
+//end namespaces

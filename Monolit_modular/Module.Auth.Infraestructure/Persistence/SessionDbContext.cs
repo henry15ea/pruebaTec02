@@ -7,10 +7,9 @@ namespace Module.Auth.Infraestructure.Persistence
 {
     public class SessionDbContext : ModuleDbContext, ISessionDBContext
     {
-        // Definimos el DbSet para la tabla Usuarios
-        public DbSet<EUserLogin> Users { get; set; }
-
         protected override string Schema => "Usuarios";
+
+        public DbSet<EUserLogin> Users { get; set; }
 
         public SessionDbContext(DbContextOptions<SessionDbContext> options) : base(options)
         {

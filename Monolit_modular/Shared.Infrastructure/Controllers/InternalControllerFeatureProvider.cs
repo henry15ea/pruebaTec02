@@ -28,5 +28,10 @@ namespace Shared.Infrastructure.Controllers
             return typeInfo.Name.EndsWith("Controller", StringComparison.OrdinalIgnoreCase) ||
                     typeInfo.IsDefined(typeof(ControllerAttribute));
         }
+
+        //end user functions or definitions
     }
+
+    //end class
 }
+//end namespaces

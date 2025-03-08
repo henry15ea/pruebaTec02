@@ -16,5 +16,9 @@ namespace API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        //end user functions or definitions
     }
+    //end class
 }
+//end namespaces

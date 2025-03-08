@@ -26,5 +26,10 @@ namespace Shared.Infrastructure.Persistence
         {
             return (await base.SaveChangesAsync(true, cancellationToken));
         }
+
+        //end user functions or definitions
     }
+
+    //end class
 }
+//end namespaces

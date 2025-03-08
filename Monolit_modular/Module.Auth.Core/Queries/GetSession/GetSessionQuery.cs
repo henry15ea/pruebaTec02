@@ -3,12 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Module.Auth.Core.Abstractions;
 using Module.Auth.Core.DTO;
 using Module.Auth.Core.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Module.Auth.Core.Queries.GetSession
 {
