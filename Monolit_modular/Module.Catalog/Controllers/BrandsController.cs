@@ -28,5 +28,9 @@ namespace Module.Catalog.Controllers
         {
             return Ok(await _mediator.Send(command));
         }
+        //end user functions or definitions 
     }
+
+    //end class
 }
+//end namespaces 

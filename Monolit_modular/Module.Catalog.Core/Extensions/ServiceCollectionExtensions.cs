@@ -11,5 +11,10 @@ namespace Modules.Catalog.Core.Extensions
             services.AddMediatR(Assembly.GetExecutingAssembly());
             return services;
         }
+
+        //end user functions or definitions
     }
+
+    //end class
 }
+//end namespaces 

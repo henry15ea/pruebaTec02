@@ -10,5 +10,9 @@ namespace Module.Catalog.Core.Abstractions
         public DbSet<Brand> Brands { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        //end user functions or definitions
     }
+
+    //end class
 }
+//end namespaces

@@ -30,4 +30,6 @@ namespace Module.Catalog.Core.Queries.GetAll
             return brands;
         }
     }
+    //end class
 }
+//end namespaces
