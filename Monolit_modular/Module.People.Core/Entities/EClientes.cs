@@ -1,48 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Module.People.Core.Entities
 {
-    [Table("Clientes")]
+    [Table("clientes")]
     public class EClientes
     {
-        [Key]  // Marca "ClienteID" como la clave primaria
+        [Key]
         [Column("clienteid")]
         public int clienteid { get; set; }
 
-        [ForeignKey("Usuario")]  // Marca la propiedad "UsuarioID" como clave foránea a "Usuarios"
+        [ForeignKey("usuarioid")]
         [Column("usuarioid")]
         public int usuarioid { get; set; }
 
         [Column("nombre")]
-        [StringLength(100)]  // Limita la longitud del nombre a 100 caracteres
+        [StringLength(100)]
         public string nombre { get; set; }
 
         [Column("apellido")]
-        [StringLength(100)]  // Limita la longitud del apellido a 100 caracteres
+        [StringLength(100)]
         public string apellido { get; set; }
 
         [Column("fechanacimiento")]
         public DateTime fechanacimiento { get; set; }
 
         [Column("direccion")]
-        [StringLength(200)]  // Limita la longitud de la dirección a 200 caracteres
+        [StringLength(200)]
         public string direccion { get; set; }
 
         [Column("telefono")]
-        [StringLength(20)]  // Limita la longitud del teléfono a 20 caracteres
+        [StringLength(20)]
         public string telefono { get; set; }
 
         [Column("correo")]
-        [StringLength(100)]  // Limita la longitud del correo a 100 caracteres
+        [StringLength(100)]
         public string correo { get; set; }
 
-        // Relación con la entidad Usuario (cada Cliente está relacionado con un Usuario)
-        public virtual EUsuarios Usuario { get; set; }
-        //end user functions or definitions
-    }
+        // Relación con Usuario
+        public EUsuarios Usuario { get; set; }
 
-    //end class
+        // Relación con Cuentas (Un Cliente puede tener muchas Cuentas)
+        public ICollection<EUserAccount> Cuentas { get; set; }
+    }
 }
-//end namespaces

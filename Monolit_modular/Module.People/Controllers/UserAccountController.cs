@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Module.People.Core.DTO.AccountDetails;
 using Module.People.Core.DTO.common;
+using Module.People.Core.Queries.GetUserAccountDetails;
 using Module.People.DTO;
 using System;
 using System.Threading.Tasks;
@@ -25,10 +26,14 @@ namespace Module.People.Controllers
             AccountBalance accountBalanceResponse = new AccountBalance();
             try 
             {
-                var repsonseHandler = await _mediator.Send(command);
+                GetUserAccountDetailQuery getUserAccountDetailQuery = new();
+                getUserAccountDetailQuery.AccountCode = command.AccountCode.Trim();
 
-                if (responseWrapper.Data.codigocuenta != null) 
+                accountBalanceResponse = await _mediator.Send(getUserAccountDetailQuery);
+
+                if (responseWrapper != null) 
                 {
+                    responseWrapper.Data = accountBalanceResponse;
                     responseWrapper.StatusResponse.Status = true;
                     responseWrapper.StatusResponse.MessageResponse = "retornando informacion del usuario";
                     responseWrapper.StatusResponse.CodeRespose = 0;
@@ -40,7 +45,7 @@ namespace Module.People.Controllers
                     responseWrapper.StatusResponse.MessageResponse = "no se pudo obtener informacion de la cuenta del usuario";
                     responseWrapper.StatusResponse.CodeRespose = 1;
                 }
-                responseWrapper.Data = responseWrapper.Data;
+                
 
                 return Ok(responseWrapper);
 

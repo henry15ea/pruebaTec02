@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace Module.People.Core.Abstractions
 {
-    public interface IUserAccountDbContext
+    public interface IUserAccountDbContext 
     {
         public DbSet<EUserAccount> UserAccount { get; set; }
 
         public DbSet<EClientes> Clientes { get; set; }
         public DbSet<EUsuarios> Usuarios { get; set; }
+        public DbSet<ETransacciones> Transacciones { get; set; }
 
         Task<AccountBalance> GetDetailsAccount(CancellationToken cancellationToken);
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         //end user functions or definitions 
     }
     //end class

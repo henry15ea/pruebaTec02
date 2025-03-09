@@ -29,14 +29,15 @@ namespace Module.People.Core.Queries.GetUserAccountDetails
 
             if (!string.IsNullOrEmpty(accountCode)) 
             {
-                var userAccountDetails = await _context.UserAccount
+                var userAccountDetails = await _context.UserAccount.Include(c => c.Cliente)
                     .FirstOrDefaultAsync(c => c.codigocuenta == accountCode.Trim(), cancellationToken);
 
                 if (userAccountDetails != null) 
                 {
-                    accountBalance.tipocuenta = accountBalance.tipocuenta.ToUpper().Trim();
-                    accountBalance.fechaapertura = accountBalance.fechaapertura;
-                    accountBalance.Saldo = accountBalance.Saldo;
+                    accountBalance.codigocuenta = accountCode;
+                    accountBalance.tipocuenta = userAccountDetails.tipocuenta.ToUpper().Trim();
+                    accountBalance.fechaapertura = userAccountDetails.fechaapertura;
+                    accountBalance.Saldo = userAccountDetails.saldo;
                 }
             };
 

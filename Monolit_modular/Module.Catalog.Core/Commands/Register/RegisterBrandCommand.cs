@@ -31,5 +31,10 @@ namespace Module.Catalog.Core.Commands.Register
             await _context.SaveChangesAsync(cancellationToken);
             return brand.Id;
         }
+
+        //end user functions or definitions
     }
+
+    //end class
 }
+//end namespaces

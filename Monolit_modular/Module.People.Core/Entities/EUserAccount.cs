@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Module.People.Core.Entities
 {
-    //[Table("cuentas", Schema = "public")]
+    [Table("cuentas", Schema = "public")]
     public class EUserAccount
     {
         [Key]
         [Column("cuentaid")]
         public int cuentaid { get; set; }
 
-        [ForeignKey("Cliente")]
+        [ForeignKey("EClientes")]
         [Column("clienteid")]
-        public int? clienteid { get; set; }  
+        public int clienteid { get; set; }  // No debe ser nullable si siempre está asociado a un cliente
 
         [Column("tipocuenta")]
         [StringLength(20)]
@@ -21,19 +21,16 @@ namespace Module.People.Core.Entities
 
         [Column("saldo")]
         [DataType("decimal(18,2)")]
-        public decimal? saldo { get; set; } 
+        public decimal saldo { get; set; }
 
         [Column("fechaapertura")]
-        public DateTime? fechaapertura { get; set; } 
+        public DateTime fechaapertura { get; set; }
 
         [Column("codigocuenta")]
         [StringLength(20)]
         public string codigocuenta { get; set; }
 
-        // Navegación de clave foránea (si deseas acceso a la entidad Cliente)
-        public virtual EClientes Cliente { get; set; }
-        //end user functions or definitions
+        // Relación con Cliente
+        public EClientes Cliente { get; set; }
     }
-    //end class
 }
-//end namespaces
