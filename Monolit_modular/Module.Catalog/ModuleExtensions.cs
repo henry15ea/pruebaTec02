@@ -14,5 +14,10 @@ namespace Module.Catalog
                 .AddCatalogInfrastructure(configuration);
             return services;
         }
+
+        //end user functions or definitions
     }
+
+    //end class
 }
+//end namespaces

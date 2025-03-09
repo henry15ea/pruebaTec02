@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Module.Auth;
 using Module.Catalog;
+using Module.People;
 using Shared.Infrastructure.Extensions;
 
 namespace API
@@ -22,7 +24,14 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSharedInfrastructure(Configuration);
-            services.AddCatalogModule(Configuration);
+            
+            //aqui se agegan los modulos que se desean cargar
+            //services.AddCatalogModule(Configuration);
+            services.AddAuthModule(Configuration);
+            services.AddPeopleModule(Configuration);
+
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });

@@ -1,10 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Module.Auth.Core.Entities
+namespace Module.People.Core.Entities
 {
-    //[Table("Usuarios")]  // Mapea la clase a la tabla "Usuarios"
-    public class EUserLogin
+    public class EUsuarios
     {
         [Key]  // Define la propiedad como clave primaria
         [Column("usuarioid")]  // Mapea la propiedad a la columna "UsuarioID"
@@ -33,6 +37,8 @@ namespace Module.Auth.Core.Entities
 
         [Column("estado")]  // Mapea la propiedad a la columna "Estado"
         public bool estado { get; set; }
+
+        //end user functions or definitions
     }
 
     //end class

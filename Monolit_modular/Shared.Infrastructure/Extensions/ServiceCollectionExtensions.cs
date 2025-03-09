@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Shared.Infrastructure.Controllers;
 
 namespace Shared.Infrastructure.Extensions
@@ -21,6 +22,8 @@ namespace Shared.Infrastructure.Extensions
         {
             var connectionString = config.GetConnectionString("Default");
             //services.AddMSSQL<T>(connectionString);
+            services.AddDbContext<T>(options =>
+            options.UseNpgsql(connectionString));
             return services;
         }
 

@@ -12,7 +12,8 @@ namespace Module.Auth.Infraestructure.Extensions
         public static IServiceCollection AddSessionInfrastructure(this IServiceCollection services, IConfiguration config)
         {
             services
-                .AddDatabaseContext<SessionDbContext>(config).AddScoped<ISessionDBContext>(provider => provider.GetService<SessionDbContext>());
+                .AddDatabaseContext<SessionDbContext>(config)
+                .AddScoped<ISessionDBContext>(provider => provider.GetService<SessionDbContext>());
             return services;
         }
         //end user funtions or definitions

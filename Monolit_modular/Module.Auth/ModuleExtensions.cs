@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Module.Auth.Core.Extensions;
+using Module.Auth.Infraestructure.Extensions;
 
 namespace Module.Auth
 {
-    class ModuleExtensions
+    public static class ModuleExtensionsr
     {
+        public static IServiceCollection AddAuthModule(this IServiceCollection services, IConfiguration configuration)
+        {
+            services
+                .AddLoginSessionCore()
+                .AddSessionInfrastructure(configuration);
+            return services;
+        }
+
+        //end class
     }
 }
+//end namespaces

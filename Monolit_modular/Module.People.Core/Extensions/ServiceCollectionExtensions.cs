@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Module.Auth.Core.Extensions
+namespace Module.People.Core.Extensions
 {
     public static class ServiceSessionCollectionExtensions
     {
-        public static IServiceCollection AddLoginSessionCore(this IServiceCollection services)
+        public static IServiceCollection AddUserAccountCore(this IServiceCollection services)
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
             return services;
