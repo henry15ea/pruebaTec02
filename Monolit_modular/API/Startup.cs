@@ -30,6 +30,15 @@ namespace API
             services.AddAuthModule(Configuration);
             services.AddPeopleModule(Configuration);
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins", builder =>
+                {
+                    builder.AllowAnyOrigin()  // Permite cualquier origen (puedes restringirlo a tus dominios si prefieres)
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
 
 
             services.AddSwaggerGen(c =>
@@ -49,7 +58,7 @@ namespace API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("AllowAllOrigins");
             app.UseRouting();
 
             app.UseAuthorization();
