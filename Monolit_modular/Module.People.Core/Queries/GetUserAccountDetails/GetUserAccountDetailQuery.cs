@@ -48,7 +48,7 @@ namespace Module.People.Core.Queries.GetUserAccountDetails
 
                 if (userAccount != null) 
                 {
-                    accountBalance.codigocuenta = accountCode;
+                    accountBalance.codigocuenta = userAccount.codigocuenta;
                     accountBalance.tipocuenta = userAccount.tipocuenta.ToUpper().Trim();
                     accountBalance.fechaapertura = userAccount.fechaapertura;
                     accountBalance.Saldo = userAccount.saldo;
