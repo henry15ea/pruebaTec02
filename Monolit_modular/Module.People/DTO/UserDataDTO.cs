@@ -4,6 +4,7 @@
     {
         public string Token { get; set; }
         public string AccountCode { get; set; }
+        public string id { get; set; }
         //End user functions or definitions
     }
 

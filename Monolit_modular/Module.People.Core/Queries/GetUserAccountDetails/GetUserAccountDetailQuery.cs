@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Module.People.Core.Abstractions;
 using Module.People.Core.DTO.AccountDetails;
+using Module.People.Core.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,6 +11,8 @@ namespace Module.People.Core.Queries.GetUserAccountDetails
     public class GetUserAccountDetailQuery : IRequest<AccountBalance>
     {
        public string AccountCode { get; set; }
+       public string AccountId { get; set; }
+
         //end user functions or definitions
     }
 
@@ -25,22 +28,31 @@ namespace Module.People.Core.Queries.GetUserAccountDetails
         {
             AccountBalance accountBalance = new AccountBalance();
             string accountCode = command.AccountCode.Trim();
+            int vlId = 0;
+            bool isParsed = int.TryParse(command.AccountId, out vlId);
 
+            
 
-            if (!string.IsNullOrEmpty(accountCode)) 
-            {
-                var userAccountDetails = await _context.UserAccount.Include(c => c.Cliente)
-                    .FirstOrDefaultAsync(c => c.codigocuenta == accountCode.Trim(), cancellationToken);
+                EUserAccount userAccount = new EUserAccount();
+                if (!string.IsNullOrEmpty(accountCode) && vlId == -1) 
+                {
+                    userAccount = await _context.UserAccount.Include(c => c.Cliente)
+                        .FirstOrDefaultAsync(c => c.codigocuenta == accountCode.Trim(), cancellationToken);
+                }
+                else 
+                {
+                    userAccount = await _context.UserAccount.Include(c => c.Cliente)
+                        .FirstOrDefaultAsync(c => c.cuentaid == vlId, cancellationToken);
+                }
+                    
 
-                if (userAccountDetails != null) 
+                if (userAccount != null) 
                 {
                     accountBalance.codigocuenta = accountCode;
-                    accountBalance.tipocuenta = userAccountDetails.tipocuenta.ToUpper().Trim();
-                    accountBalance.fechaapertura = userAccountDetails.fechaapertura;
-                    accountBalance.Saldo = userAccountDetails.saldo;
+                    accountBalance.tipocuenta = userAccount.tipocuenta.ToUpper().Trim();
+                    accountBalance.fechaapertura = userAccount.fechaapertura;
+                    accountBalance.Saldo = userAccount.saldo;
                 }
-            };
-
 
             return accountBalance;
         }

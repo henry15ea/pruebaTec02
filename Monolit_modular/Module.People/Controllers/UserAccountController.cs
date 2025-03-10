@@ -27,7 +27,8 @@ namespace Module.People.Controllers
             try 
             {
                 GetUserAccountDetailQuery getUserAccountDetailQuery = new();
-                getUserAccountDetailQuery.AccountCode = command.AccountCode.Trim();
+                getUserAccountDetailQuery.AccountCode = command.AccountCode == null ? command.AccountCode : command.AccountCode.Trim();
+                getUserAccountDetailQuery.AccountId = command.id.Trim();
 
                 accountBalanceResponse = await _mediator.Send(getUserAccountDetailQuery);
 
